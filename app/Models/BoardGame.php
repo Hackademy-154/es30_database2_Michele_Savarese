@@ -11,7 +11,8 @@ class BoardGame extends Model
         'name',
         'type',
         'players',
-        'instructor'
+        'instructor',
+        'box'
     ];
     //! fillable, array che contiene le caratteristiche del modello
     // public $name;
