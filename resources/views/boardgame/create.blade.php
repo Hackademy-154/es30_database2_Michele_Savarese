@@ -6,11 +6,11 @@
                     Inserisci i dati dei giochi
                 </h1>
                 @if (@session('success'))
-                <div class="alert alert-success text-center">
-                    {{ session('success') }}
-                </div>
-            @endif
-                @if ($errors->any())
+                    <div class="alert alert-success text-center">
+                        {{ session('success') }}
+                    </div>
+                @endif
+                {{-- @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
                             @foreach ($errors->all() as $error)
@@ -18,7 +18,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif --}}
             </div>
         </div>
 
@@ -31,26 +31,41 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome del gioco:</label>
-                        <input class="form-control" type="text" name="name">
+                        <input value="{{old('name')}}" class="form-control @error('name') is-invalid @enderror" type="text" name="name">
+                        @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="type" class="form-label">Tipo di gioco:</label>
-                        <input class="form-control" type="text" name="type">
+                        <label for="type" class="form-label  @error('type') is-invalid @enderror"">Tipo di gioco:</label>
+                        <input value="{{old('type')}}" class="form-control" type="text" name="type">
+                        @error('type')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="players" class="form-label">Numero di giocatori:</label>
-                        <input class="form-control" type="number" name="players">
+                        <label for="players" class="form-label  @error('players') is-invalid @enderror"">Numero di giocatori:</label>
+                        <input value="{{old('players')}}" class="form-control" type="number" name="players">
+                        @error('players')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
 
                     <div class="mb-3">
-                        <label for="instructor" class="form-label">Istruttore:</label>
-                        <input class="form-control" type="text" name="instructor">
+                        <label for="instructor" class="form-label  @error('instructor') is-invalid @enderror"">Istruttore:</label>
+                        <input value="{{old('instructor')}}" class="form-control" type="text" name="instructor">
+                        @error('instructor')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
 
 
                     <div class="mb-3">
-                        <label for="box" class="form-label">Immagine:</label>
+                        <label for="box" class="form-label  @error('box') is-invalid @enderror"">Immagine:</label>
                         <input class="form-control" type="file" name="box">
+                        @error('box')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     </div>
 
                     <div class="text-center ">
