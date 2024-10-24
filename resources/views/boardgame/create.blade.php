@@ -5,19 +5,29 @@
                 <h1 class="text-center text-black display-4 text-shadow">
                     Inserisci i dati dei giochi
                 </h1>
+                @if (@session('success'))
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
+            @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
             </div>
         </div>
 
         <div class="row justify-content-center">
             <div class="col-12 col-md-6">
 
-                <form action="{{route('boardgame.library')}}" method="POST" class="rounded shadow p-5 bg-secondary-subtle text-center" enctype="multipart/form-data">
-                    @if (@session('success'))
-                    <div class="alert alert-success text-center">
-                        {{session('success')}}
-                    </div>
+                <form action="{{ route('boardgame.library') }}" method="POST"
+                    class="rounded shadow p-5 bg-secondary-subtle text-center" enctype="multipart/form-data">
 
-                    @endif
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nome del gioco:</label>
