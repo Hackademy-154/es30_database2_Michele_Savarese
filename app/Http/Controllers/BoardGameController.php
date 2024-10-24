@@ -24,7 +24,7 @@ class BoardGameController extends Controller
                 'type' => $request->input('type'),
                 'players' => $request->input('players'),
                 'instructor' => $request->input('instructor'),
-                'box'=>$request->has('box') ? $request->file('box')->store('box','public'):'/media/default.jpg',
+                'box' => $request->has('box') ? $request->file('box')->store('box', 'public') : '/media/default.jpg',
             ]
         );
         // dd('controlla il database');

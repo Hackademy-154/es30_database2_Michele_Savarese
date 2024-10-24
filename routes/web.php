@@ -8,6 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('welcome',[PublicController::class,'homepage'])->name('welcome');
+Route::get('welcome', [PublicController::class, 'homepage'])->name('welcome');
 Route::get('/boardgame/create/', [BoardGameController::class, 'create'])->name('boardgame.create');
-Route::post('/boardgame/library', [BoardGameController::class,'library'])->name('boardgame.library');
+Route::post('/boardgame/library', [BoardGameController::class, 'library'])->name('boardgame.library');
